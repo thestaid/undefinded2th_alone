@@ -35,18 +35,19 @@
 			<li <c:if test="${not empty id }">style="display:none;"</c:if>
 				id="navbarSignin">
 				<form action="${pageContext.request.contextPath }/users/signin.do" method="post" id="navSignIn" class="form-group" style="margin-top:10px;">
-					<input type="password" placeholder="비밀번호" id="navSigninPwd" style="width: 100px" class="form-control pull-right"/>
-					<input type="text"  placeholder="아이디" id="navSigninId" style="width: 100px; margin-right: 3px;" class="form-control pull-right"/>
-				</form>				
+					<input type="hidden" name="uri" value="${pageContext.request.requestURI }"/>
+					<input type="password" name="pwd" placeholder="비밀번호" id="navSigninPwd" style="width: 100px" class="form-control pull-right"/>
+					<input type="text" name="id" placeholder="아이디" id="navSigninId" style="width: 100px; margin-right: 3px;" class="form-control pull-right"/>
+				</form>			
 			</li>
 			<li <c:if test="${not empty id }">style="display:none;"</c:if>
 				id="navbarSignin">
 				<a class="btn" onclick="document.getElementById('navSignIn').submit();">LOGIN</a>
-			</li>
+			</li>			
 			<li <c:if test="${not empty id }">style="display:none;"</c:if>
 				id="navbarSignup"
 				<c:if test="${param.active eq 'signUp' }">class="active"</c:if>>
-				<a href="${pageContext.request.contextPath }/users/signup.do" class="btn" >회원가입</a>
+				<a href="${pageContext.request.contextPath }/users/signup.do?uri=${curUri }" class="btn" >회원가입</a>
 			</li>
 		</ul>
 	</div>

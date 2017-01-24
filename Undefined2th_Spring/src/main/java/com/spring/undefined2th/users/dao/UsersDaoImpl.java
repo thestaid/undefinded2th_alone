@@ -19,12 +19,20 @@ public class UsersDaoImpl implements UsersDao{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	//isValid Start
 	@Override
 	public boolean isValid(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		UsersDto resultDto=null;
+		try{
+			resultDto=session.selectOne("users.isValid", dto);
+		}catch(Exception e){}
+		if(resultDto==null){
+			return false;
+		}else{
+			return true;
+		}
+	}//isValid End
 
 	@Override
 	public UsersDto getData(String id) {
